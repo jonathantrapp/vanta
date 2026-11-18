@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    VANTA for Fedora Linux. Builds from the SAME source files as the Windows app (src\HwSuite), linked rather than copied,
+    so effects, fan curves, safety rules and the save format stay identical on both systems. Only the files listed under
+    "Windows-only" are left out; their Linux counterparts live in Platform\ (new code) and Ported\ (Windows file copied
+    and changed where the platform differs). See linux\PORTING_STATUS.md.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>vanta</AssemblyName>
+    <RootNamespace>HwSuite</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+    <Version>1.20.0</Version>
+    <InformationalVersion>1.20.0-linux.0</InformationalVersion>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <DefineConstants>$(DefineConstants);VANTA_LINUX</DefineConstants>
+    <!-- CA1416: the shared files carry Windows attributes in places; the Linux build never reaches those paths. -->
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <WinSrc>..\..\..\src\HwSuite\</WinSrc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HidSharp" Version="2.6.4" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+    <PackageReference Include="Avalonia" Version="11.2.3" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.3" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <!-- Shared, platform-neutral source from the Windows app -->
+  <ItemGroup>
+    <Compile Include="$(WinSrc)Core\**\*.cs" Link="Shared\Core\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="$(WinSrc)Rgb\**\*.cs" Link="Shared\Rgb\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="$(WinSrc)Fans\**\*.cs" Link="Shared\Fans\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="$(WinSrc)Hardware\**\*.cs" Link="Shared\Hardware\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="$(WinSrc)Cli\**\*.cs" Link="Shared\Cli\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Remove="$(WinSrc)AppServices.cs" />
+  </ItemGroup>
+
+  <!-- Windows-only files: replaced by Platform\ or Ported\ -->
+  <ItemGroup>
+    <Compile Remove="$(WinSrc)Hardware\LhmService.cs" />
+    <Compile Remove="$(WinSrc)Hardware\PawnIoClient.cs" />
+    <Compile Remove="$(WinSrc)Hardware\SmbusI801.cs" />
+    <Compile Remove="$(WinSrc)Hardware\TelemetryHub.cs" />
+    <Compile Remove="$(WinSrc)Hardware\SystemStats.cs" />
+    <Compile Remove="$(WinSrc)Fans\FanChannels.cs" />
+    <Compile Remove="$(WinSrc)Core\MemoryTopology.cs" />
+    <Compile Remove="$(WinSrc)Core\ImagePalette.cs" />
+    <Compile Remove="$(WinSrc)Hardware\Al80\Al80Imaging.cs" />
+    <Compile Remove="$(WinSrc)Hardware\Al80\Al80Service.cs" />
+    <Compile Remove="$(WinSrc)Fans\FailsafeWatchdog.cs" />
+    <Compile Remove="$(WinSrc)Core\LightsOut.cs" />
+    <Compile Remove="$(WinSrc)Hardware\Heartbeat.cs" />
+    <Compile Remove="$(WinSrc)Hardware\ServiceControl.cs" />
+    <Compile Remove="$(WinSrc)Hardware\StartupTask.cs" />
+    <Compile Remove="$(WinSrc)Core\ThreadCpu.cs" />
+    <Compile Remove="$(WinSrc)Rgb\PrecisionTimer.cs" />
+    <Compile Remove="$(WinSrc)Rgb\RgbEngine.cs" />
+    <Compile Remove="$(WinSrc)Cli\FanMapping.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTestPhase14.cs" />
+    <Compile Remove="$(WinSrc)Cli\UiIdleBench.cs" />
+    <Compile Remove="$(WinSrc)Cli\KeyboardTransitionTest.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTest.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTestPhase8.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTestPhase11.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTestPhase12.cs" />
+    <Compile Remove="$(WinSrc)Cli\SelfTestPhase20.cs" />
+    <Compile Remove="$(WinSrc)Cli\Diagnostics.cs" />
+    <Compile Remove="$(WinSrc)Cli\LiveTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="..\..\..\src\HwSuite\Ui\vanta.ico" Link="Assets\vanta.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\docs\phase11\fixture-config.json" LogicalName="fixture-config.json" />
+  </ItemGroup>
+
+</Project>

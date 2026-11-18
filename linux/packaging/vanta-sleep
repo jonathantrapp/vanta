@@ -1,0 +1,7 @@
+#!/bin/sh
+# /usr/lib/systemd/system-sleep/vanta — tell the engine before suspend and after resume (fans back to firmware, lighting paused).
+case "$1" in
+  pre)  /opt/vanta/vanta --notify suspend >/dev/null 2>&1 || true ;;
+  post) /opt/vanta/vanta --notify resume  >/dev/null 2>&1 || true ;;
+esac
+exit 0

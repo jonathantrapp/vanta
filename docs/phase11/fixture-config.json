@@ -1,0 +1,428 @@
+{
+  "Version": 4,
+  "FanControlEnabled": false,
+  "AutoStopGigabyte": true,
+  "RestoreGigabyteOnExit": true,
+  "KeyboardVerified": true,
+  "KeyboardLiveVerified": true,
+  "KeyboardSleepChoice": null,
+  "LightsOutHotkey": "Ctrl\u002BShift\u002BF12",
+  "StartMinimized": false,
+  "MinimizeToTray": true,
+  "Preset": "Performance",
+  "Channels": [
+    {
+      "Id": "gpu:0",
+      "Label": "GPU Fan 1",
+      "Kind": "GpuFan",
+      "Mode": "Curve",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "Gpu",
+        "Points": [
+          {
+            "Temp": 40,
+            "Percent": 40
+          },
+          {
+            "Temp": 50,
+            "Percent": 50
+          },
+          {
+            "Temp": 58,
+            "Percent": 62
+          },
+          {
+            "Temp": 65,
+            "Percent": 78
+          },
+          {
+            "Temp": 72,
+            "Percent": 92
+          },
+          {
+            "Temp": 76,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": null,
+      "MinEvidence": null,
+      "TachSeen": true,
+      "TachMapped": false,
+      "TachEvidence": null,
+      "MeasuredStartPercent": null,
+      "StartEvidence": null
+    },
+    {
+      "Id": "gpu:1",
+      "Label": "GPU Fan 2",
+      "Kind": "GpuFan",
+      "Mode": "Curve",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "Gpu",
+        "Points": [
+          {
+            "Temp": 40,
+            "Percent": 40
+          },
+          {
+            "Temp": 50,
+            "Percent": 50
+          },
+          {
+            "Temp": 58,
+            "Percent": 62
+          },
+          {
+            "Temp": 65,
+            "Percent": 78
+          },
+          {
+            "Temp": 72,
+            "Percent": 92
+          },
+          {
+            "Temp": 76,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": null,
+      "MinEvidence": null,
+      "TachSeen": true,
+      "TachMapped": false,
+      "TachEvidence": null,
+      "MeasuredStartPercent": null,
+      "StartEvidence": null
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/0",
+      "Label": "Arctic Liquid Freezer II 240 (CPU_FAN)",
+      "Kind": "Aio",
+      "Mode": "Curve",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Custom",
+        "Source": "Cpu",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 80
+          },
+          {
+            "Temp": 45,
+            "Percent": 85
+          },
+          {
+            "Temp": 60,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": null,
+      "MinEvidence": null,
+      "TachSeen": true,
+      "TachMapped": true,
+      "TachEvidence": "Phase 4 identify pulse: control 0 moves tachometer 0 (CPU_FAN)",
+      "MeasuredStartPercent": null,
+      "StartEvidence": null
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/1",
+      "Label": "Rear exhaust",
+      "Kind": "CaseFan",
+      "Mode": "Auto",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "MaxOfBoth",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 40
+          },
+          {
+            "Temp": 40,
+            "Percent": 50
+          },
+          {
+            "Temp": 50,
+            "Percent": 62
+          },
+          {
+            "Temp": 60,
+            "Percent": 75
+          },
+          {
+            "Temp": 70,
+            "Percent": 90
+          },
+          {
+            "Temp": 75,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": 50,
+      "MinEvidence": "Phase 9 attended test 2026-10-14: rear exhaust ran at 25% (~310 RPM), stalled at 20%; from a stop did not restart at 25/30/35%, restarted at 40%; minimum = 40% \u002B 10 (owner confirmed)",
+      "TachSeen": true,
+      "TachMapped": true,
+      "TachEvidence": "Phase 9 fan-step (docs\\phase9\\fanmap1-ctl1): control 1 moves only tachometer 1",
+      "MeasuredStartPercent": 40,
+      "StartEvidence": "Phase 9 attended startup test 2026-10-14 (docs/phase9/mintest-ctl1): from a stop it did not restart at 25/30/35%, restarted at 40%"
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/2",
+      "Label": "Front intake\u2014SYS_FAN2 (upper)",
+      "Kind": "CaseFan",
+      "Mode": "Auto",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "MaxOfBoth",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 40
+          },
+          {
+            "Temp": 40,
+            "Percent": 50
+          },
+          {
+            "Temp": 50,
+            "Percent": 62
+          },
+          {
+            "Temp": 60,
+            "Percent": 75
+          },
+          {
+            "Temp": 70,
+            "Percent": 90
+          },
+          {
+            "Temp": 75,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": 35,
+      "MinEvidence": "Phase 9 attended test 2026-10-14: upper front intake ran at 25%; from a stop did not restart at 20%, restarted at 25%; minimum = 25% \u002B 10 (owner confirmed)",
+      "TachSeen": true,
+      "TachMapped": true,
+      "TachEvidence": "Phase 9 fan-step (docs\\phase9\\fanmap1-ctl2): control 2 moves only tachometer 2",
+      "MeasuredStartPercent": 25,
+      "StartEvidence": "Phase 9 attended startup test 2026-10-14 (docs/phase9/frontstart-ctl2): from a stop it did not restart at 20%, restarted at 25%"
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/3",
+      "Label": "Front intake\u2014SYS_FAN3 (lower)",
+      "Kind": "CaseFan",
+      "Mode": "Curve",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Custom",
+        "Source": "MaxOfBoth",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 40
+          },
+          {
+            "Temp": 40,
+            "Percent": 50
+          },
+          {
+            "Temp": 51,
+            "Percent": 69
+          },
+          {
+            "Temp": 60,
+            "Percent": 75
+          },
+          {
+            "Temp": 70,
+            "Percent": 90
+          },
+          {
+            "Temp": 75,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": 50,
+      "MinEvidence": "Phase 9 attended test 2026-10-14: lower front intake ran at 20% (~237 RPM); from a stop did not restart at 20% or 25%; 30%\u002B not tested (GPU-temperature abort); 50% chosen as a conservative bound (owner confirmed)",
+      "TachSeen": true,
+      "TachMapped": true,
+      "TachEvidence": "Phase 9 fan-step (docs\\phase9\\fanmap1-ctl3): control 3 moves only tachometer 3",
+      "MeasuredStartPercent": 50,
+      "StartEvidence": "Phase 10 attended check 2026-10-14 (docs/phase10/fanstart-ctl3): restarted from rest at 50% in 3 of 3 tries (first rotation 4.8-10.8 s) and when VANTA took it over from a stop"
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/4",
+      "Label": "ITE IT8689E Fan #5",
+      "Kind": "Generic",
+      "Mode": "Auto",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "MaxOfBoth",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 40
+          },
+          {
+            "Temp": 40,
+            "Percent": 50
+          },
+          {
+            "Temp": 50,
+            "Percent": 62
+          },
+          {
+            "Temp": 60,
+            "Percent": 75
+          },
+          {
+            "Temp": 70,
+            "Percent": 90
+          },
+          {
+            "Temp": 75,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": null,
+      "MinEvidence": null,
+      "TachSeen": false,
+      "TachMapped": false,
+      "TachEvidence": null,
+      "MeasuredStartPercent": null,
+      "StartEvidence": null
+    },
+    {
+      "Id": "lhm:/lpc/it8689e/0/control/5",
+      "Label": "ITE IT8689E Fan #6",
+      "Kind": "Generic",
+      "Mode": "Auto",
+      "ManualPercent": 50,
+      "Curve": {
+        "Name": "Performance",
+        "Source": "MaxOfBoth",
+        "Points": [
+          {
+            "Temp": 30,
+            "Percent": 40
+          },
+          {
+            "Temp": 40,
+            "Percent": 50
+          },
+          {
+            "Temp": 50,
+            "Percent": 62
+          },
+          {
+            "Temp": 60,
+            "Percent": 75
+          },
+          {
+            "Temp": 70,
+            "Percent": 90
+          },
+          {
+            "Temp": 75,
+            "Percent": 100
+          }
+        ],
+        "HysteresisC": 2,
+        "RampUpPerSec": 35,
+        "StepDownPerSec": 6,
+        "MinPercent": 0,
+        "MaxPercent": 100,
+        "ReleaseToAutoBelowC": 0
+      },
+      "VerifiedMinPercent": null,
+      "MinEvidence": null,
+      "TachSeen": false,
+      "TachMapped": false,
+      "TachEvidence": null,
+      "MeasuredStartPercent": null,
+      "StartEvidence": null
+    }
+  ],
+  "Rgb": {
+    "Effect": "Stealth",
+    "ColorA": 2201770,
+    "ColorB": 16639,
+    "SavedColors": [],
+    "Speed": 0.6,
+    "Brightness": 0.7,
+    "Enabled": true,
+    "Motherboard": true,
+    "Mouse": true,
+    "Keyboard": true,
+    "KeyboardWaveMode": null,
+    "Ram": true,
+    "DLedStrip": true,
+    "DLedCount": 27,
+    "StripOrder": "Grb",
+    "DLedMaxHz": 60,
+    "DLedExperimental120": false,
+    "MouseMaxHz": 1,
+    "MotherboardMaxHz": 20,
+    "RamMaxHz": 10,
+    "RamOnboardEffects": false,
+    "LightsOutRestoreEffect": "Breathing",
+    "LightsOutRestoreEnabled": true
+  }
+}

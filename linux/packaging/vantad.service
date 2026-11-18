@@ -1,0 +1,26 @@
+[Unit]
+Description=VANTA hardware engine (fans, lighting, AL80 keyboard)
+Documentation=file:///opt/vanta/PORTING_STATUS.md
+After=systemd-modules-load.service nvidia-persistenced.service
+Wants=systemd-modules-load.service
+
+[Service]
+Type=simple
+ExecStart=/opt/vanta/vanta --daemon
+# Always runs after the engine exits (clean stop, crash or kill): hands every claimed fan back to automatic.
+ExecStopPost=/opt/vanta/vanta --restore
+# Settings live in /var/lib/vanta/HwSuite (config.json etc.); runtime files (control socket, heartbeat) in /run/vanta.
+Environment=XDG_CONFIG_HOME=/var/lib/vanta
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=1
+StateDirectory=vanta
+RuntimeDirectory=vanta
+RuntimeDirectoryMode=0750
+# root user (fans, SMBus, NVML writes need it); group vanta so members can use the control socket
+Group=vanta
+UMask=0007
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
